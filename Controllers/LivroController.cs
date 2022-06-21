@@ -14,15 +14,23 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Cadastro(Livro l)
         {
-            LivroService livroService = new LivroService();
+            if(l.Titulo== "" || l.Autor== "" ||l.Ano== 0){
 
-            if(l.Id == 0)
+                ViewData["msgErro"] = "Um ou mais campos podem não ter sido preenchidos";
+                return View();
+            }else
             {
-                livroService.Inserir(l);
-            }
-            else
-            {
-                livroService.Atualizar(l);
+
+                LivroService livroService = new LivroService();
+
+                if(l.Id == 0)
+                {
+                    livroService.Inserir(l);
+                }
+                else
+                {
+                    livroService.Atualizar(l);
+                }
             }
 
             return RedirectToAction("Listagem");
