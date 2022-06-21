@@ -27,6 +27,7 @@ namespace Biblioteca.Models
                 emprestimo.LivroId = e.LivroId;
                 emprestimo.DataEmprestimo = e.DataEmprestimo;
                 emprestimo.DataDevolucao = e.DataDevolucao;
+                emprestimo.Devolvido = e.Devolvido;
 
                 bc.SaveChanges();
             }
@@ -107,5 +108,6 @@ namespace Biblioteca.Models
                 return bc.Emprestimos.Find(id);
             }
         }
+
     }
 }
