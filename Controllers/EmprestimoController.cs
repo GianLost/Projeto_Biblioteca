@@ -53,11 +53,12 @@ namespace Biblioteca.Controllers
             LivroService livroService = new LivroService();
             EmprestimoService em = new EmprestimoService();
             Emprestimo e = em.ObterPorId(id);
-
+            
+            
             CadEmprestimoViewModel cadModel = new CadEmprestimoViewModel();
             cadModel.Livros = livroService.ListarTodos();
             cadModel.Emprestimo = e;
-            
+
             return View(cadModel);
         }
     }
