@@ -40,7 +40,6 @@ namespace Biblioteca.Models
         public void editarUsuario(Usuario userEditar){
             using(BibliotecaContext bc = new BibliotecaContext()){
 
-               //  Usuario u = Listar(editarUsuario.Id);  essa seria uma maneira de encontrar o usuario para editar
                Usuario u = bc.Usuarios.Find(userEditar.Id);
                u.Nome = userEditar.Nome;
                u.Login =userEditar.Login;
@@ -55,13 +54,9 @@ namespace Biblioteca.Models
         public void excluirUsuario(int id){
 
             using(BibliotecaContext bc = new BibliotecaContext()){
-                   
-
-                   Usuario usuarioEncontrado = bc.Usuarios.Find(id);
-                bc.Usuarios.Remove(usuarioEncontrado);  // o Remove não reconhece diretamente a propriedade int, 
-                // ela deve primeiro ser passada para um objeto, para que o remove possa reconhece-la, no caso 
-                // estamos passando o int id para o objeto bc, essa  é uma das formas de usar o metodo Remove
-                // ou  bc.Usuarios.Remove(Listar(id)); 
+                
+                Usuario usuarioEncontrado = bc.Usuarios.Find(id);
+                bc.Usuarios.Remove(usuarioEncontrado); 
                 bc.SaveChanges();
             }
         }
@@ -71,9 +66,6 @@ namespace Biblioteca.Models
         {   
             using(BibliotecaContext bc = new BibliotecaContext())
             {
-                      
-
-
                 return bc.Usuarios.Find(id);  
             }
         }

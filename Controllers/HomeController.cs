@@ -1,5 +1,4 @@
 ﻿using Biblioteca.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +22,7 @@ namespace Biblioteca.Controllers
         public IActionResult Index()
         {
             Autenticacao.CheckLogin(this);
-            ViewData["message"] = "seja bem vindo ao sistema de controle de emprestimo de livros";
+            ViewData["message"] = "Bem-Vindo à nossa Biblioteca";
             return View();
         }
 
@@ -39,7 +38,7 @@ namespace Biblioteca.Controllers
             if(Autenticacao.verificaLoginSenha(login,senha,this)){
                     return RedirectToAction("Index");
             }else{
-                 ViewData["Erro"] = "Senha inválida";
+                 ViewData["Erro"] = "Usuário inválido";
                 return View();
 
             }
