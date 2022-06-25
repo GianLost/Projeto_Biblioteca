@@ -1,4 +1,3 @@
-
 using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.ComponentModel;
@@ -8,8 +7,6 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Security.AccessControl;
 using System;
-//using SystemAcl.Security.Cryptography;
-//using FileSystemAclExtensions.Text;
 
 namespace Biblioteca.Models
 {
