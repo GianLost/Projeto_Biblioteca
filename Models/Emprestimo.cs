@@ -15,7 +15,7 @@ namespace Biblioteca.Models
 
         [StringLength(100)]
         public string Telefone { get; set; }
-
+        
         public bool Devolvido { get; set;}
 
         public int LivroId { get; set; }

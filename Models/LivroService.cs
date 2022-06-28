@@ -84,6 +84,35 @@ namespace Biblioteca.Models
             }
         }
 
+         public ICollection<Livro> GetLivros(string q, string ordem, int page, int size) // esse metodo é usado somente por livros e é fundamental para a paginaçao
+            {
+            using (var context = new BibliotecaContext())
+            {
+                int pular = (page - 1)* size;
+
+                IQueryable<Livro> consulta = context.Livros.Where(l=>l.Titulo.Contains(q,StringComparison.OrdinalIgnoreCase));
+                
+                
+                if(ordem == "t"){
+                    consulta = consulta.OrderBy(l=>l.Titulo);
+                }else{
+                    if(ordem == "a"){
+                    consulta = consulta.OrderBy(l=>l.Autor);
+                    }
+                }
+                
+
+                return consulta.Skip(pular).Take(size).ToList();
+            
+            }
+            
+            }
+           public int CountRegistro(){
+                using(var context = new BibliotecaContext()){
+                    return context.Livros.Count();
+                }
+            }
+
         public Livro ObterPorId(int id)
         {
             using (BibliotecaContext bc = new BibliotecaContext())
